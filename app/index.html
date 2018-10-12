@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" media="all" href="//s3.amazonaws.com/bm3assets/assets/application-6a8644b02936d0783d27d459f05896a42cf2898e29821750345ecac53c5fb43d.css" />
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container-topbar">
+      <a class="logo-buzzmonitor" href="/folders">Buzzmonitor</a>
+      <nav>
+        <a href="#" class="toggle-nav"><span class="translation_missing" title="translation missing: en.views.private.top_bar.toogle_navigation">Toogle Navigation</span></a>
+        <ul class="modules">
+          <li class="home"><a href="/folders">Home</a></li>
+          <li>
+            <span>Monitoring</span>
+            <ul class="pages">
+              <li><a class="manage" href="/user/brands/edit">Manage projects</a></li>
+              <li><a class="open" href="/folders?collection_type=monitoring">View collection</a></li>
+              <li><a class="import" href="/import">Import data</a></li>
+              <li><a class="trigger" href="/triggers">Triggers (Rules)</a></li>
+              <li><a class="export" href="/exports">Exported data</a></li>
+              <li><a class="back" href="#">Back</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>Customer Care</span>
+            <ul class="pages">
+                <li><a class="manage" href="/user/settings?tab=crm">Manage service channels</a></li>
+                <li><a class="open" href="/folders?collection_type=social_crm">View collection</a></li>
+                <li><a class="publish" href="/schedule_messages">Publisher</a></li>
+                <li><a class="ticket" href="/crm_queues">Tickets</a></li>
+                <li><a class="trigger" href="/triggers">Triggers (Rules)</a></li>
+                <li><a class="export" href="/exports">Exported data</a></li>
+                <li><a class="back" href="#">Back</a></li>
+            </ul>
+          </li>
+          <li>
+            <span>Analytics</span>
+            <ul class="pages">
+                <li><a class="manage" href="/user/brands/edit">Manage profiles and pages</a></li>
+                <li><a class="open" href="/folders?collection_type=social_analytics">View collection</a></li>
+                <li><a class="back" href="#">Back</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="user">
+        <div class="user-settings">
+        <div class="user-photo">
+          <img fallback-src="" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1522812497807980&amp;height=200&amp;width=200&amp;ext=1541873293&amp;hash=AeQTneXacATu6Y0S" />
+            A
+          </div>
+          <ul class="box-settings">
+            <li class="user-info">
+              <span class="name">Alice Fernandes</span>
+              <span class="email">alice.computacao.silva@gmail.com</span>
+            </li>
+            <li class="group">Users</li>
+            <li><a href="/users/management">Manage users</a></li>
+            <li><a href="/teams/management">Manage teams</a></li>
+            <li class="group">Data</li>
+            <li><a href="/volumetry">Volumetry</a></li>
+            <li><a class="settings_menu" href="/user/settings">Settings</a></li>
+            <li class="logout"><a rel="nofollow" data-method="delete" href="/user/session">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="search">
+    <h1><b>Buzzmonitor Admin</b></h1>
+  </div>
+  <div class="container" ng-controller="HomeCrtl">
+    <div class="row">
+          <div class="input-group input-group-lg">
+              <input type="text" class="form-control">
+              <div class="input-group-btn">
+                  <button type="button" class="btn btn-primary" ng-click="viewFunctions()">Search</button>
+              </div>
+          </div>
+    </div>
+    <div id="menu">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home">USER</a></li>
+          <li><a data-toggle="tab" href="#menu1">PROJECTS & COLLECT</a></li>
+          <li><a data-toggle="tab" href="#menu2">MODULES</a></li>
+          <li><a data-toggle="tab" href="#menu2">OTHERS</a></li>
+        </ul>
+    </div>
+    <div class="tab-content card">
+      <div id="home" class="tab-pane fade in active" style="margin-top: 20px">
+        <form class="form-horizontal">
+          <fieldset>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" style="font-weight: normal">User</label>
+              <div class="col-sm-8" style="margin-top: 8px">
+                090909029029209209
+              </div>
+            </div>
+            <div class="form-group" >
+              <label class="col-sm-3 control-label" for ="sel1" style="font-weight: normal">Active Station</label>
+              <div class="col-sm-3">
+                  <select class="form-control" id="sel1">
+                      <option>Active Station</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" style="font-weight: normal">Acount Type</label>
+              <div class="col-sm-3">
+                  <select class="form-control" id="sel1">
+                      <option>Unassigned</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" style="font-weight: normal" for="textinput">Password</label>
+              <div class="col-sm-3">
+                  <input type="password" class="form-control" id="pwd">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" style="font-weight: normal" for="textinput">Password Confirmation</label>
+              <div class="col-sm-3">
+                  <input type="password" class="form-control" id="pwd">
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div id="menu1" class="tab-pane fade">
+        <h3>PROJECTS & COLLECT</h3>
+        <p>Some content in menu 1.</p>
+      </div>
+      <div id="menu2" class="tab-pane fade">
+        <h3>MODULES</h3>
+        <p>Some content in menu 2.</p>
+      </div>
+      <div id="menu2" class="tab-pane fade">
+        <h3>OTHERS</h3>
+        <p>Some content in menu 2.</p>
+      </div>
+    </div>
+  </div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
