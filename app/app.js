@@ -12,5 +12,14 @@ angular.module('myApp', []).controller('HomeCrtl', ['$scope', function($scope){
     console.log($scope.functions)
     console.log("Oi");
   }
+
+  $scope.numPostsColletedPerMonth = 600000;
+
+  $scope.consumoAtual = 200000
+  $scope.porcentagem = Math.round(($scope.consumoAtual / $scope.numPostsColletedPerMonth) * 100)
+
+  $scope.myStyle = {
+    'width':  $scope.porcentage
+  }
   
 }]);
