@@ -206,8 +206,12 @@
               </div>
         </div>
         <div>
-          
+          <b>Add extra posts: </b>
         </div>
+        <div>
+          <input type="number" style="height: 34px" ng-model="extracollects">
+        </div>
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
       </div>
       <div id="menu3" class="tab-pane fade">
         <h3>MODULES</h3>
@@ -224,6 +228,10 @@
           $('[data-toggle="tooltip"]').tooltip();   
       });
       </script>
+    
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
