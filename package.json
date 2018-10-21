@@ -7,6 +7,7 @@
     "license": "MIT",
     "devDependencies": {
         "bower": "^1.7.7",
+        "grunt-build-control": "^0.7.1",
         "http-server": "^0.11.1",
         "jasmine-core": "^2.4.1",
         "karma": "^0.13.22",
@@ -17,7 +18,7 @@
         "protractor": "^4.0.9"
     },
     "scripts": {
-        "postinstall": "node ./node_modules/bower/bin/bower install",
+        "postinstall": "bower install",
         "update-deps": "npm update",
         "postupdate-deps": "bower update",
         "prestart": "npm install",
