@@ -1,157 +1,177 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', []).controller('HomeCrtl', ['$scope', function($scope){
-  $scope.functions = false;
-  $scope.numberOfProjects = "";
-  $scope.postsColletedPerMonth = "";
-  $scope.trackesAnalyticsProfile = "";
-  $scope.CRMProfiles = "";
-  $scope.teste = 0;
-  $scope.viewFunctions = function(){
-    $scope.functions = true;
-    console.log($scope.functions)
-    console.log("Oi");
-  }
+angular.module('myApp', []).controller('HomeCrtl', ['$scope', function ($scope) {
+    $scope.functions = false;
+    $scope.numberOfProjects = "";
+    $scope.postsColletedPerMonth = "";
+    $scope.trackesAnalyticsProfile = "";
+    $scope.CRMProfiles = "";
+    $scope.teste = 0;
+    $scope.viewFunctions = function () {
+        $scope.functions = true;
+        console.log($scope.functions)
+        console.log("Oi");
+    }
 
-  $scope.numPostsColletedPerMonth = 600000;
+    $scope.numPostsColletedPerMonth = 600000;
 
-  $scope.consumoAtual = 200000
-  $scope.porcentagem = Math.round(($scope.consumoAtual / $scope.numPostsColletedPerMonth) * 100)
+    $scope.consumoAtual = 200000
+    $scope.porcentagem = Math.round(($scope.consumoAtual / $scope.numPostsColletedPerMonth) * 100)
 
-  $scope.myStyle = {
-    'width':  $scope.porcentage
-  }
+    $scope.myStyle = {
+        'width': $scope.porcentage
+    }
 
-  $scope.extracollects = 0;
+    $scope.extracollects = 0;
 
-  $scope.captions = ["a", "b", "c"]
-  
-  Highcharts.chart('container', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Browser market shares. January, 2018'
-    },
-    subtitle: {
-        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
-    },
-    xAxis: {
-        type: 'category'
-    },
-    yAxis: {
-        title: {
-            text: 'Total percent market share'
-        }
+    $scope.captions = ["a", "b", "c"]
 
-    },
-    legend: {
-        enabled: false
-    },
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            dataLabels: {
-                enabled: true,
-                format: '{point.y:.1f}%'
-            }
-        }
-    },
-
-    tooltip: {
-        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-    },
-
-    "series": [
-        {
-            "name": "Browsers",
-            "colorByPoint": true,
-            "data": [
-                {
-                    "name": "Chrome",
-                    "y": 62.74
-                },
-                {
-                    "name": "Firefox",
-                    "y": 10.57
-                },
-                {
-                    "name": "Internet Explorer",
-                    "y": 7.23
-                },
-                {
-                    "name": "Safari",
-                    "y": 5.58
-                },
-                {
-                    "name": "Edge",
-                    "y": 4.02
-                },
-                {
-                    "name": "Opera",
-                    "y": 1.92
-                },
-                {
-                    "name": "Other",
-                    "y": 7.62
-                },
-                {
-                  "name": "Other4",
-                  "y": 7.62
-              },
-              {
-                "name": "Othe3",
-                "y": 7.62
-            },
-            {
-              "name": "Other2",
-              "y": 7.62
-          },
-          {
-            "name": "Other1",
-            "y": 7.62
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
         },
-        {
-          "name": "Other11",
-          "y": 7.62
-      },
-      {
-        "name": "Other10",
-        "y": 7.62
-    },
-    {
-      "name": "Other99",
-      "y": 7.62
-  },
-  {
-    "name": "Other88",
-    "y": 7.62
-},
-{
-  "name": "Other77",
-  "y": 7.62
-},
-{
-  "name": "Other66",
-  "y": 7.62
-},
-{
-  "name": "Othe55",
-  "y": 7.62
-},
-{
-  "name": "Other44",
-  "y": 7.62
-},
-{
-  "name": "Other100",
-  "y": 7.62
-}
+        title: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: ""
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}%'
+                }
+            }
+        },
 
-            ]
-        }
-    ]
-});
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.atual}</b> of total<br/>'
+        },
+
+        "series": [
+            {
+                "name": "Consumer",
+                "colorByPoint": true,
+                "data": [
+                    {
+                        "name": "Brand 1",
+                        "y": 10.67,
+                        'atual': 10000
+                    },
+                    {
+                        "name": "Brand 2",
+                        "y": 6.67,
+                        'atual': 400
+                    },
+                    {
+                        "name": "Brand 3",
+                        "y": 83.34,
+                        'atual': 5000
+                    },
+                    {
+                        "name": "Brand 4",
+                        "y": 5.50,
+                        'atual': 330
+                    },
+                    {
+                        "name": "Brand 5",
+                        "y": 5.00,
+                        'atual': 300
+                    },
+                    {
+                        "name": "Brand 6",
+                        "y": 3.34,
+                        'atual': 200
+                    },
+                    {
+                        "name": "Brand 7",
+                        "y": 1.67,
+                        'atual': 100
+                    },
+                    {
+                        "name": "Brand 8",
+                        "y": 15.00,
+                        'atual': 900
+                    },
+                    {
+                        "name": "Brand 9",
+                        "y": 13.34,
+                        'atual': 800
+                    },
+                    {
+                        "name": "Brand 10",
+                        "y": 11.67,
+                        'atual': 700
+                    },
+                    {
+                        "name": "Brand 11",
+                        "y": 5.00,
+                        'atual': 300
+                    },
+                    {
+                        "name": "Brand 12",
+                        "y": 1.67,
+                        'atual': 100
+                    },
+                    {
+                        "name": "Brand 13",
+                        "y": 3.34,
+                        'atual': 200
+                    },
+                    {
+                        "name": "Brand 14",
+                        "y": 66.67,
+                        'atual': 4000
+                    },
+                    {
+                        "name": "Brand 15",
+                        "y": 83.33,
+                        'atual': 5000
+                    },
+                    {
+                        "name": "Brand 16",
+                        "y": 0,
+                        'atual': 0
+                    },
+                    {
+                        "name": "Brand 17",
+                        "y": 33.34,
+                        'atual': 2000
+                    },
+                    {
+                        "name": "Brand 18",
+                        "y": 50.00,
+                        'atual': 3000
+                    },
+                    {
+                        "name": "Brand 19",
+                        "y": 66.67,
+                        'atual': 4000
+                    },
+                    {
+                        "name": "Brand 20",
+                        "y": 83.33,
+                        'atual': 5000
+                    }
+
+                ]
+            }
+        ]
+    });
+
+    $scope.brands = ["Brand 1", "Brand 2", "Brand 3", "Brand 4", "Brand 5", "Brand 6", "Brand 7",
+    "Brand 8", "Brand 9", "Brand 10", "Brand 11", "Brand 12", "Brand 13", "Brand 14", "Brand 15",
+    "Brand 16", "Brand 17", "Brand 18", "Brand 19", "Brand 20"];
 }]);

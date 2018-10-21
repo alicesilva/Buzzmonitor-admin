@@ -3,104 +3,247 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Buzzmonitor Admin</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" media="all" href="//s3.amazonaws.com/bm3assets/assets/application-6a8644b02936d0783d27d459f05896a42cf2898e29821750345ecac53c5fb43d.css" />
+  <link rel="stylesheet" media="all" href="//s3.amazonaws.com/bm3assets/assets/application-6a8644b02936d0783d27d459f05896a42cf2898e29821750345ecac53c5fb43d.css"
+  />
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
+
 <body>
   <div class="topbar">
     <div class="container-topbar">
       <a class="logo-buzzmonitor" href="/folders">Buzzmonitor</a>
       <nav>
-        <a href="#" class="toggle-nav"><span class="translation_missing" title="translation missing: en.views.private.top_bar.toogle_navigation">Toogle Navigation</span></a>
+        <a href="#" class="toggle-nav">
+          <span class="translation_missing" title="translation missing: en.views.private.top_bar.toogle_navigation">Toogle Navigation</span>
+        </a>
         <ul class="modules">
-          <li class="home"><a href="/folders">Home</a></li>
+          <li class="home">
+            <a href="/folders">Home</a>
+          </li>
           <li>
             <span>Monitoring</span>
             <ul class="pages">
-              <li><a class="manage" href="/user/brands/edit">Manage projects</a></li>
-              <li><a class="open" href="/folders?collection_type=monitoring">View collection</a></li>
-              <li><a class="import" href="/import">Import data</a></li>
-              <li><a class="trigger" href="/triggers">Triggers (Rules)</a></li>
-              <li><a class="export" href="/exports">Exported data</a></li>
-              <li><a class="back" href="#">Back</a></li>
+              <li>
+                <a class="manage" href="/user/brands/edit">Manage projects</a>
+              </li>
+              <li>
+                <a class="open" href="/folders?collection_type=monitoring">View collection</a>
+              </li>
+              <li>
+                <a class="import" href="/import">Import data</a>
+              </li>
+              <li>
+                <a class="trigger" href="/triggers">Triggers (Rules)</a>
+              </li>
+              <li>
+                <a class="export" href="/exports">Exported data</a>
+              </li>
+              <li>
+                <a class="back" href="#">Back</a>
+              </li>
             </ul>
           </li>
           <li>
             <span>Customer Care</span>
             <ul class="pages">
-                <li><a class="manage" href="/user/settings?tab=crm">Manage service channels</a></li>
-                <li><a class="open" href="/folders?collection_type=social_crm">View collection</a></li>
-                <li><a class="publish" href="/schedule_messages">Publisher</a></li>
-                <li><a class="ticket" href="/crm_queues">Tickets</a></li>
-                <li><a class="trigger" href="/triggers">Triggers (Rules)</a></li>
-                <li><a class="export" href="/exports">Exported data</a></li>
-                <li><a class="back" href="#">Back</a></li>
+              <li>
+                <a class="manage" href="/user/settings?tab=crm">Manage service channels</a>
+              </li>
+              <li>
+                <a class="open" href="/folders?collection_type=social_crm">View collection</a>
+              </li>
+              <li>
+                <a class="publish" href="/schedule_messages">Publisher</a>
+              </li>
+              <li>
+                <a class="ticket" href="/crm_queues">Tickets</a>
+              </li>
+              <li>
+                <a class="trigger" href="/triggers">Triggers (Rules)</a>
+              </li>
+              <li>
+                <a class="export" href="/exports">Exported data</a>
+              </li>
+              <li>
+                <a class="back" href="#">Back</a>
+              </li>
             </ul>
           </li>
           <li>
             <span>Analytics</span>
             <ul class="pages">
-                <li><a class="manage" href="/user/brands/edit">Manage profiles and pages</a></li>
-                <li><a class="open" href="/folders?collection_type=social_analytics">View collection</a></li>
-                <li><a class="back" href="#">Back</a></li>
+              <li>
+                <a class="manage" href="/user/brands/edit">Manage profiles and pages</a>
+              </li>
+              <li>
+                <a class="open" href="/folders?collection_type=social_analytics">View collection</a>
+              </li>
+              <li>
+                <a class="back" href="#">Back</a>
+              </li>
             </ul>
+          </li>
+          <li>
+            <span>Dashboards</span>
           </li>
         </ul>
       </nav>
+
       <div class="user">
-        <div class="user-settings">
-        <div class="user-photo">
-          <img fallback-src="" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1522812497807980&amp;height=200&amp;width=200&amp;ext=1541873293&amp;hash=AeQTneXacATu6Y0S" />
-            A
+        <input type="text" name="form-search-query" id="form-search-query" class="input-search" placeholder="Search reports" />
+        <span id="list-notifications-container" class="m-notifications">
+          <div class="n-notifications">
+            <ul class="n-notifications-list" data-ng-show="unreadNotificationsShouldBeShown()" data-ng-cloak>
+              <li class="n-notifications-list-item" data-ng-repeat="notification in unreadNotifications">
+                <div class="n-notification n-notification-{{notification._id}} {{getNotificationClass(notification.type)}}">
+                  <a class="close" data-ng-click="closeNotification(notification._id)"></a>
+
+                  <p class="title">Notification</p>
+                  <p class="message" ng-bind-html="notification.content"></p>
+                  <p class="date">{{getNotificationDate(notification.created_at)}}</p>
+
+                  <a class="action" target="_blank" href="{{notification.action_url}}" title="{{notification.action_label}}" data-ng-if="notification.action_url">{{notification.action_label}}</a>
+                </div>
+              </li>
+            </ul>
           </div>
-          <ul class="box-settings">
-            <li class="user-info">
-              <span class="name">Alice Fernandes</span>
-              <span class="email">alice.computacao.silva@gmail.com</span>
-            </li>
-            <li class="group">Users</li>
-            <li><a href="/users/management">Manage users</a></li>
-            <li><a href="/teams/management">Manage teams</a></li>
-            <li class="group">Data</li>
-            <li><a href="/volumetry">Volumetry</a></li>
-            <li><a class="settings_menu" href="/user/settings">Settings</a></li>
-            <li class="logout"><a rel="nofollow" data-method="delete" href="/user/session">Logout</a></li>
-          </ul>
+          <a class="btn-notifications" data-ng-class="{on: notificationsListPanelShoulBeShown}" data-ng-click="toggleNotificationsList()"
+            href="#" title="Notifications">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Camada_1" data-name="Camada 1" viewBox="0 0 50.57 60" class="icon" preserveAspectRatio="xMaxYMax meet"
+              width="100%" height="100%">
+              <title>bell</title>
+              <path d="M985.2,565.3H936.8a1,1,0,0,1-.9-1.6l7.5-13.2V533.4a17.6,17.6,0,0,1,18.3-17.6c9.5.3,17,8.5,17,18v16.7l7.5,13.2A1.15,1.15,0,0,1,985.2,565.3ZM961,571a5.28,5.28,0,0,0,5-3.7H956A5.28,5.28,0,0,0,961,571Zm.7-57.2c.6,0,1.1.1,1.7.1v-.5a2.4,2.4,0,0,0-4.8,0v.5a19.42,19.42,0,0,1,2.4-.2A1.7,1.7,0,0,0,961.7,513.8Z"
+                transform="translate(-935.72 -511)"></path>
+            </svg>
+            <div class="count-alert" data-ng-bind="userUnreadNotificationsCounter()" data-ng-cloak data-ng-show="ureadNotificationsCounterShouldBeShown()"></div>
+          </a>
+          <span id="notifications-list-panel" data-ng-cloak data-ng-show="notificationsListPanelShoulBeShown">
+            <ul class="m-notifications-list" data-ng-show="emptyNotificationsListShouldBeShown">
+              <div class="m-notifications-list-header">
+                Notifications
+              </div>
+              <li class="m-notifications-list-item">
+                <div class="m-notification normal">
+                  You don&#39;t have new notifications
+                </div>
+              </li>
+            </ul>
+            <ul class="m-notifications-list" data-ng-show="notificationsListShouldBeShown">
+              <div class="m-notifications-list-header">
+                Notifications
+                <span>({{allUserNotificationsCount}})</span>
+              </div>
+
+              <div class="m-notifications-list-body">
+                <div class="m-notifications-list-height">
+                  <li class="m-notifications-list-item" data-ng-repeat="notification in notificationsToList">
+                    <div class="m-notification m-notification-{{notification._id}} m-notification-{{notificationWasReadClass(notification)}} {{getNotificationClass(notification.type)}} {{getNonPersistentClass(notification.persistent)}}">
+
+                      <a class="read-unread" data-ng-click="undoReadNotification(notification._id, $event)" data-ng-show="notificationWasRead(notification)"
+                        title="Mark as unread">
+                        <i class="far fa-envelope-open" aria-hidden="true"></i>
+                      </a>
+
+                      <a class="read-unread" data-ng-click="doReadNotification(notification._id, $event)" data-ng-show="!notificationWasRead(notification)"
+                        title="Mark as read">
+                        <i class="far fa-envelope" aria-hidden="true"></i>
+                      </a>
+
+                      <p class="message" ng-bind-html="notification.content"></p>
+
+                      <a class="action" target="_blank" href="{{notification.action_url}}" title="{{notification.action_label}}" data-ng-if="notification.action_url">{{notification.action_label}}</a>
+
+                      <p class="date">{{getNotificationDate(notification.created_at)}}</p>
+                    </div>
+                  </li>
+
+                  <li class="m-notifications-list-item" data-ng-show="loadingAnimation">
+                    <div class="loading-notifications"></div>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </span>
+        </span>
+        <div class="user">
+          <div class="user-settings">
+            <div class="user-photo">
+              <img fallback-src="" src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1522812497807980&amp;height=200&amp;width=200&amp;ext=1541873293&amp;hash=AeQTneXacATu6Y0S"
+              /> A
+            </div>
+            <ul class="box-settings">
+              <li class="user-info">
+                <span class="name">Alice Fernandes</span>
+                <span class="email">alice.computacao.silva@gmail.com</span>
+              </li>
+              <li class="group">Users</li>
+              <li>
+                <a href="/users/management">Manage users</a>
+              </li>
+              <li>
+                <a href="/teams/management">Manage teams</a>
+              </li>
+              <li class="group">Data</li>
+              <li>
+                <a href="/volumetry">Volumetry</a>
+              </li>
+              <li>
+                <a class="settings_menu" href="/user/settings">Settings</a>
+              </li>
+              <li class="logout">
+                <a rel="nofollow" data-method="delete" href="/user/session">Logout</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="search">
-    <h1><b>Buzzmonitor Admin</b></h1>
+  <div class="main-container management">
+    <div class="bar">
+      <span>Buzzmonitor Admin</span>
+    </div>
   </div>
   <div class="container" ng-controller="HomeCrtl">
-    <div class="row">
-          <div class="input-group input-group-lg">
-              <input type="text" class="form-control">
-              <div class="input-group-btn">
-                  <button type="button" class="btn btn-primary" ng-click="viewFunctions()">Search</button>
-              </div>
-          </div>
+    <div class="row" style="margin-left: 300px; margin-right: 300px">
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" placeholder="Search emails and report IDs/URLs">
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-primary" ng-click="viewFunctions()">Search</button>
+        </div>
+      </div>
     </div>
-    <div ng-show = "functions" id="menu">
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#home">USER</a></li>
-          <li><a data-toggle="tab" href="#menu1">PROJECTS & COLLECT</a></li>
-          <li><a data-toggle="tab" href="#menu2">CONSUMER</a></li>
-          <li><a data-toggle="tab" href="#menu3">MODULES</a></li>
-          <li><a data-toggle="tab" href="#menu4">OTHERS</a></li>
-        </ul>
+    <div ng-show="functions" id="menu">
+      <ul class="nav nav-tabs">
+        <li id="active">
+          <a data-toggle="tab" href="#home">USER</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#menu1">PROJECTS & COLLECT</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#menu2">CONSUMER</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#menu3">MODULES</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#menu4">OTHERS</a>
+        </li>
+      </ul>
     </div>
-    <div ng-show = "functions" class="tab-content card">
+    <div ng-show="functions" class="tab-content card">
       <div id="home" class="tab-pane fade in active" style="margin-top: 20px">
         <form class="form-horizontal">
           <fieldset>
@@ -110,32 +253,32 @@
                 090909029029209209
               </div>
             </div>
-            <div class="form-group" >
-              <label class="col-sm-3 control-label" for ="sel1" style="font-weight: normal">Active Station</label>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="sel1" style="font-weight: normal">Active Station</label>
               <div class="col-sm-3">
-                  <select class="form-control">
-                      <option>Active Station</option>
-                  </select>
+                <select class="form-control">
+                  <option>Active Station</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" style="font-weight: normal">Acount Type</label>
               <div class="col-sm-3">
-                  <select class="form-control">
-                      <option>Unassigned</option>
-                  </select>
+                <select class="form-control">
+                  <option>Unassigned</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" style="font-weight: normal" for="textinput">Password</label>
               <div class="col-sm-3">
-                  <input type="password" class="form-control">
+                <input type="password" class="form-control">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label" style="font-weight: normal" for="textinput">Password Confirmation</label>
               <div class="col-sm-3">
-                  <input type="password" class="form-control">
+                <input type="password" class="form-control">
               </div>
             </div>
           </fieldset>
@@ -165,7 +308,7 @@
                 </select>
               </div>
               <div ng-if="postsColletedPerMonth == 'Limited'" class="col-sm-3">
-                <input type="text" style="height: 34px">
+                <input type="number" style="height: 34px">
               </div>
             </div>
             <div class="form-group">
@@ -197,41 +340,97 @@
       </div>
       <div id="menu2" class="tab-pane fade" style="margin-top: 20px; margin-left: 100px; margin-right: 100px">
         <div>
-            <b>Monthly Consumption:</b>
+          <label>Post consumption for this month:</label> (01/09/2018 until today)
         </div>
-          <div class="progress">
-              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="porcentagem"
-              aria-valuemin="0" aria-valuemax="100" ng-style="{'width' : porcentagem + '%' }"  data-toggle="tooltip" title= "{{consumoAtual}} de {{numPostsColletedPerMonth}}">
-              {{porcentagem}}%
-              </div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="porcentagem" aria-valuemin="0" aria-valuemax="100"
+            ng-style="{'width' : porcentagem + '%' }" data-toggle="tooltip" title="{{consumoAtual}} de {{numPostsColletedPerMonth}}">
+            {{porcentagem}}%
+          </div>
         </div>
         <div>
-          <b>Add extra posts: </b>
+          <label>Add extra quota of posts for this month:</label>
         </div>
         <div>
           <input type="number" style="height: 34px" ng-model="extracollects">
         </div>
-        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 50px"></div>
+        <div>
+            <form>
+                <div class="form-group">
+                  <label for="sel1">Pause brand</label>
+                  <select class="form-control">
+                    <option></option>
+                    <option ng-repeat="p in brands">{{p}}</option>
+                  </select>
+                  <br>
+                </div>
+              </form>
+        </div>
+        <div>
+
+        </div>
       </div>
       <div id="menu3" class="tab-pane fade">
-        <h3>MODULES</h3>
-        <p>Some content in menu 2.</p>
+          <form class="form-horizontal" style="margin-top: 20px">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" style="font-weight: normal">Active Analytics Pro</label>
+                  <div class="col-sm-8" style="margin-top: 8px">
+                    <input type = "checkbox">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="sel1" style="font-weight: normal">Active Dashboards</label>
+                  <div class="col-sm-3">
+                      <input type = "checkbox" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" style="font-weight: normal">Active Historical Search</label>
+                  <div class="col-sm-3">
+                      <input type = "checkbox">
+                  </div>
+                </div>
+              </fieldset>
+            </form>
       </div>
       <div id="menu4" class="tab-pane fade">
-        <h3>OTHERS</h3>
-        <p>Some content in menu 2.</p>
+          <form class="form-horizontal" style="margin-top: 20px">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" style="font-weight: normal">Sponsored Facebook posts</label>
+                  <div class="col-sm-8" style="margin-top: 8px">
+                    <input type = "checkbox">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="sel1" style="font-weight: normal">Social New Sources</label>
+                  <div class="col-sm-3">
+                          <input type="number" style="height: 34px; width: 300px">
+                  </div>
+                </div>
+                  <div style="margin-left: 260px">
+                      <p>No Social New sources selected, wich means this account doesn't monitor social news.</p>
+                  </div>
+              </fieldset>
+            </form>
       </div>
+    </div>
+    <div ng-show="functions" style="margin-left: 80px; margin-right: 80px; margin-top: 20px">
+      <a>Access this user/report usin his token</a>
+      <button type="button" class="btn btn-primary btn-lg btn-right">Save</button>
     </div>
   </div>
   <script>
-      $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip();   
-      });
-      </script>
-    
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    $(document).ready(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/drilldown.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
@@ -241,4 +440,5 @@
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
 </body>
+
 </html>
