@@ -105,21 +105,21 @@
         <input type="text" name="form-search-query" id="form-search-query" class="input-search" placeholder="Search reports" />
         <span id="list-notifications-container" class="m-notifications">
           <div class="n-notifications">
-            <ul class="n-notifications-list" data-ng-show="unreadNotificationsShouldBeShown()" data-ng-cloak>
-              <li class="n-notifications-list-item" data-ng-repeat="notification in unreadNotifications">
+            <ul class="n-notifications-list" ng-show="unreadNotificationsShouldBeShown()" ng-cloak>
+              <li class="n-notifications-list-item" ng-repeat="notification in unreadNotifications">
                 <div class="n-notification n-notification-{{notification._id}} {{getNotificationClass(notification.type)}}">
-                  <a class="close" data-ng-click="closeNotification(notification._id)"></a>
+                  <a class="close" ng-click="closeNotification(notification._id)"></a>
 
                   <p class="title">Notification</p>
                   <p class="message" ng-bind-html="notification.content"></p>
                   <p class="date">{{getNotificationDate(notification.created_at)}}</p>
 
-                  <a class="action" target="_blank" href="{{notification.action_url}}" title="{{notification.action_label}}" data-ng-if="notification.action_url">{{notification.action_label}}</a>
+                  <a class="action" target="_blank" href="{{notification.action_url}}" title="{{notification.action_label}}" ng-if="notification.action_url">{{notification.action_label}}</a>
                 </div>
               </li>
             </ul>
           </div>
-          <a class="btn-notifications" data-ng-class="{on: notificationsListPanelShoulBeShown}" data-ng-click="toggleNotificationsList()"
+          <a class="btn-notifications" ng-class="{on: notificationsListPanelShoulBeShown}" ng-click="toggleNotificationsList()"
             href="#" title="Notifications">
             <svg xmlns="http://www.w3.org/2000/svg" id="Camada_1" data-name="Camada 1" viewBox="0 0 50.57 60" class="icon" preserveAspectRatio="xMaxYMax meet"
               width="100%" height="100%">
@@ -127,10 +127,10 @@
               <path d="M985.2,565.3H936.8a1,1,0,0,1-.9-1.6l7.5-13.2V533.4a17.6,17.6,0,0,1,18.3-17.6c9.5.3,17,8.5,17,18v16.7l7.5,13.2A1.15,1.15,0,0,1,985.2,565.3ZM961,571a5.28,5.28,0,0,0,5-3.7H956A5.28,5.28,0,0,0,961,571Zm.7-57.2c.6,0,1.1.1,1.7.1v-.5a2.4,2.4,0,0,0-4.8,0v.5a19.42,19.42,0,0,1,2.4-.2A1.7,1.7,0,0,0,961.7,513.8Z"
                 transform="translate(-935.72 -511)"></path>
             </svg>
-            <div class="count-alert" data-ng-bind="userUnreadNotificationsCounter()" data-ng-cloak data-ng-show="ureadNotificationsCounterShouldBeShown()"></div>
+            <div class="count-alert" ng-bind="userUnreadNotificationsCounter()" ng-cloak ng-show="ureadNotificationsCounterShouldBeShown()"></div>
           </a>
-          <span id="notifications-list-panel" data-ng-cloak data-ng-show="notificationsListPanelShoulBeShown">
-            <ul class="m-notifications-list" data-ng-show="emptyNotificationsListShouldBeShown">
+          <span id="notifications-list-panel" ng-cloak ng-show="notificationsListPanelShoulBeShown">
+            <ul class="m-notifications-list" ng-show="emptyNotificationsListShouldBeShown">
               <div class="m-notifications-list-header">
                 Notifications
               </div>
@@ -140,7 +140,7 @@
                 </div>
               </li>
             </ul>
-            <ul class="m-notifications-list" data-ng-show="notificationsListShouldBeShown">
+            <ul class="m-notifications-list" ng-show="notificationsListShouldBeShown">
               <div class="m-notifications-list-header">
                 Notifications
                 <span>({{allUserNotificationsCount}})</span>
@@ -151,25 +151,25 @@
                   <li class="m-notifications-list-item" ng-repeat="notification in notificationsToList">
                     <div class="m-notification m-notification-{{notification._id}} m-notification-{{notificationWasReadClass(notification)}} {{getNotificationClass(notification.type)}} {{getNonPersistentClass(notification.persistent)}}">
 
-                      <a class="read-unread" ng-click="undoReadNotification(notification._id, $event)" data-ng-show="notificationWasRead(notification)"
+                      <a class="read-unread" ng-click="undoReadNotification(notification._id, $event)" ng-show="notificationWasRead(notification)"
                         title="Mark as unread">
                         <i class="far fa-envelope-open" aria-hidden="true"></i>
                       </a>
 
-                      <a class="read-unread" ng-click="doReadNotification(notification._id, $event)" data-ng-show="!notificationWasRead(notification)"
+                      <a class="read-unread" ng-click="doReadNotification(notification._id, $event)" ng-show="!notificationWasRead(notification)"
                         title="Mark as read">
                         <i class="far fa-envelope" aria-hidden="true"></i>
                       </a>
 
                       <p class="message" ng-bind-html="notification.content"></p>
 
-                      <a class="action" target="_blank" href="{{notification.action_url}}" title="{{notification.action_label}}" data-ng-if="notification.action_url">{{notification.action_label}}</a>
+                      <a class="action" target="_blank" href="{{notification.action_url}}" title="{{notification.action_label}}" ng-if="notification.action_url">{{notification.action_label}}</a>
 
                       <p class="date">{{getNotificationDate(notification.created_at)}}</p>
                     </div>
                   </li>
 
-                  <li class="m-notifications-list-item" data-ng-show="loadingAnimation">
+                  <li class="m-notifications-list-item" ng-show="loadingAnimation">
                     <div class="loading-notifications"></div>
                   </li>
                 </div>
@@ -438,15 +438,15 @@
       <button type="button" class="btn btn-primary btn-lg btn-right" ng-click="save()">Save</button>
     </div>
 
-      <script src="https://code.highcharts.com/highcharts.js"></script>
-      <script src="https://code.highcharts.com/modules/data.js"></script>
-      <script src="https://code.highcharts.com/modules/drilldown.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="app.js"></script>
-      <script src="components/version/version.js"></script>
-      <script src="components/version/version-directive.js"></script>
-      <script src="components/version/interpolate-filter.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
 </body>
 
 </html>
