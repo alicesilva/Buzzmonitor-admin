@@ -23,35 +23,35 @@
 <body>
   <div class="topbar">
     <div class="container-topbar">
-      <a class="logo-buzzmonitor" href="/folders">Buzzmonitor</a>
+      <a class="logo-buzzmonitor">Buzzmonitor</a>
       <nav>
-        <a href="#" class="toggle-nav">
+        <a class="toggle-nav">
           <span class="translation_missing" title="translation missing: en.views.private.top_bar.toogle_navigation">Toogle Navigation</span>
         </a>
         <ul class="modules">
           <li class="home">
-            <a href="/folders">Home</a>
+            <a>Home</a>
           </li>
           <li>
             <span>Monitoring</span>
             <ul class="pages">
               <li>
-                <a class="manage" href="/user/brands/edit">Manage projects</a>
+                <a class="manage">Manage projects</a>
               </li>
               <li>
-                <a class="open" href="/folders?collection_type=monitoring">View collection</a>
+                <a class="open">View collection</a>
               </li>
               <li>
-                <a class="import" href="/import">Import data</a>
+                <a class="import">Import data</a>
               </li>
               <li>
-                <a class="trigger" href="/triggers">Triggers (Rules)</a>
+                <a class="trigger">Triggers (Rules)</a>
               </li>
               <li>
-                <a class="export" href="/exports">Exported data</a>
+                <a class="export">Exported data</a>
               </li>
               <li>
-                <a class="back" href="#">Back</a>
+                <a class="back">Back</a>
               </li>
             </ul>
           </li>
@@ -59,25 +59,25 @@
             <span>Customer Care</span>
             <ul class="pages">
               <li>
-                <a class="manage" href="/user/settings?tab=crm">Manage service channels</a>
+                <a class="manage">Manage service channels</a>
               </li>
               <li>
-                <a class="open" href="/folders?collection_type=social_crm">View collection</a>
+                <a class="open">View collection</a>
               </li>
               <li>
-                <a class="publish" href="/schedule_messages">Publisher</a>
+                <a class="publish">Publisher</a>
               </li>
               <li>
-                <a class="ticket" href="/crm_queues">Tickets</a>
+                <a class="ticket">Tickets</a>
               </li>
               <li>
-                <a class="trigger" href="/triggers">Triggers (Rules)</a>
+                <a class="trigger">Triggers (Rules)</a>
               </li>
               <li>
-                <a class="export" href="/exports">Exported data</a>
+                <a class="export">Exported data</a>
               </li>
               <li>
-                <a class="back" href="#">Back</a>
+                <a class="back">Back</a>
               </li>
             </ul>
           </li>
@@ -85,13 +85,13 @@
             <span>Analytics</span>
             <ul class="pages">
               <li>
-                <a class="manage" href="/user/brands/edit">Manage profiles and pages</a>
+                <a class="manage">Manage profiles and pages</a>
               </li>
               <li>
-                <a class="open" href="/folders?collection_type=social_analytics">View collection</a>
+                <a class="open">View collection</a>
               </li>
               <li>
-                <a class="back" href="#">Back</a>
+                <a class="back">Back</a>
               </li>
             </ul>
           </li>
@@ -114,13 +114,13 @@
                   <p class="message" ng-bind-html="notification.content"></p>
                   <p class="date">{{getNotificationDate(notification.created_at)}}</p>
 
-                  <a class="action" target="_blank" href="{{notification.action_url}}" title="{{notification.action_label}}" ng-if="notification.action_url">{{notification.action_label}}</a>
+                  <a class="action" target="_blank" title="{{notification.action_label}}" ng-if="notification.action_url">{{notification.action_label}}</a>
                 </div>
               </li>
             </ul>
           </div>
           <a class="btn-notifications" ng-class="{on: notificationsListPanelShoulBeShown}" ng-click="toggleNotificationsList()"
-            href="#" title="Notifications">
+              title="Notifications">
             <svg xmlns="http://www.w3.org/2000/svg" id="Camada_1" data-name="Camada 1" viewBox="0 0 50.57 60" class="icon" preserveAspectRatio="xMaxYMax meet"
               width="100%" height="100%">
               <title>bell</title>
@@ -163,7 +163,7 @@
 
                       <p class="message" ng-bind-html="notification.content"></p>
 
-                      <a class="action" target="_blank" href="{{notification.action_url}}" title="{{notification.action_label}}" ng-if="notification.action_url">{{notification.action_label}}</a>
+                      <a class="action" target="_blank" title="{{notification.action_label}}" ng-if="notification.action_url">{{notification.action_label}}</a>
 
                       <p class="date">{{getNotificationDate(notification.created_at)}}</p>
                     </div>
@@ -190,23 +190,23 @@
               </li>
               <li class="group">Users</li>
               <li>
-                <a href="/users/management">Manage users</a>
+                <a>Manage users</a>
               </li>
               <li>
-                <a href="/teams/management">Manage teams</a>
+                <a>Manage teams</a>
               </li>
               <li class="group">Data</li>
               <li>
-                <a href="/volumetry">Volumetry</a>
+                <a>Volumetry</a>
               </li>
               <li>
-                <a class="settings_menu" href="/user/settings">Settings</a>
+                <a class="settings_menu">Settings</a>
               </li>
               <li>
                 <a class="settings_menu">Buzzmonitor Admin</a>
               </li>
               <li class="logout">
-                <a rel="nofollow" data-method="delete" href="/user/session">Logout</a>
+                <a rel="nofollow" data-method="delete">Logout</a>
               </li>
             </ul>
           </div>
