@@ -7,7 +7,6 @@ angular.module('myApp', []).controller('HomeCrtl', ['$scope', function ($scope) 
     $scope.postsColletedPerMonth = "";
     $scope.trackesAnalyticsProfile = "";
     $scope.CRMProfiles = "";
-    $scope.teste = 0;
     $scope.viewFunctions = function () {
         $scope.functions = true;
         console.log($scope.functions)
@@ -24,9 +23,7 @@ angular.module('myApp', []).controller('HomeCrtl', ['$scope', function ($scope) 
     }
 
     $scope.extracollects = 0;
-
-    $scope.captions = ["a", "b", "c"]
-
+    
     Highcharts.chart('container', {
         chart: {
             type: 'column'
@@ -174,6 +171,4 @@ angular.module('myApp', []).controller('HomeCrtl', ['$scope', function ($scope) 
     $scope.brands = ["Brand 1", "Brand 2", "Brand 3", "Brand 4", "Brand 5", "Brand 6", "Brand 7",
     "Brand 8", "Brand 9", "Brand 10", "Brand 11", "Brand 12", "Brand 13", "Brand 14", "Brand 15",
     "Brand 16", "Brand 17", "Brand 18", "Brand 19", "Brand 20"];
-
-    $scope.teste = "a"
 }]);
